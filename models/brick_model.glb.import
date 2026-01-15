@@ -3,21 +3,21 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtjvjdjl8cs6e"
-path="res://.godot/imported/flag.glb-0b6fa3c4b5180c1221a26057702dcf53.scn"
+uid="uid://cs417o1y08xb1"
+path="res://.godot/imported/brick_model.glb-f98aedfe66a06ddadab8eec32f3effb5.scn"
 
 [deps]
 
-source_file="res://models/flag.glb"
-dest_files=["res://.godot/imported/flag.glb-0b6fa3c4b5180c1221a26057702dcf53.scn"]
+source_file="res://models/brick_model.glb"
+dest_files=["res://.godot/imported/brick_model.glb-f98aedfe66a06ddadab8eec32f3effb5.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.75
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -34,9 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=0
+materials/extract=1
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-gltf/naming_version=0
+gltf/naming_version=2
 gltf/embedded_image_handling=1
