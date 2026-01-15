@@ -23,7 +23,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
 	# Set position and rotation to targets
 	
 	self.position = self.position.lerp(target.position, delta * 4)
@@ -34,7 +33,6 @@ func _physics_process(delta):
 	handle_input(delta)
 
 # Handle input
-
 func handle_input(delta):
 	
 	# Rotation

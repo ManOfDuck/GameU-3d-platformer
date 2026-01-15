@@ -36,10 +36,9 @@ gravity = Vector3(0, 0.1, 0)
 scale_min = 0.75
 scale_curve = SubResource("CurveTexture_f46kd")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("view")]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8580446, 0)
 script = ExtResource("1_ffboj")
-view = NodePath("Node/View")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
@@ -70,13 +69,14 @@ volume_db = -5.0
 pitch_scale = 1.25
 autoplay = true
 
-[node name="Node" type="Node" parent="."]
+[node name="CameraHolder" type="Node" parent="."]
 
-[node name="View" type="Node3D" parent="Node" node_paths=PackedStringArray("target")]
+[node name="View" type="Node3D" parent="CameraHolder" node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8580446, 0)
 script = ExtResource("6_3rerk")
 target = NodePath("../..")
 
-[node name="Camera" type="Camera3D" parent="Node/View"]
+[node name="Camera" type="Camera3D" parent="CameraHolder/View"]
 
 [editable path="Character"]
