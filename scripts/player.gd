@@ -56,10 +56,10 @@ func _physics_process(delta):
 	if position.y < -10:
 		get_tree().reload_current_scene()
 	
-	# Animation for scale (jumping and landing)
+	# Move our model towards its default scale
 	model.scale = model.scale.lerp(Vector3(1, 1, 1), delta * 10)
 	
-	# Animation when landing
+	# If we just landed, squish our model a bit!
 	if is_on_floor() and gravity > 2 and !previously_floored:
 		model.scale = Vector3(1.25, 0.75, 1.25)
 		Audio.play("res://sounds/land.ogg")
@@ -68,20 +68,20 @@ func _physics_process(delta):
 
 # Handle movement input
 func handle_controls(delta):
-	# Movement
+	# This creates an "arrow" (Vector3) called "input" and tells Godot to read the player's input
 	var input := Vector3.ZERO
-	
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
+	# This is a little weird, it rotates the "arrow" to face the direction of the camera
+	# We do this so that pressing Up/W makes you walk away from the camera, not always to the north.
 	input = input.rotated(Vector3.UP, view.rotation.y)
+	input = input.normalized()
 	
-	if input.length() > 1:
-		input = input.normalized()
-	
+	# Update movement_velocity, for use later in physics_process()
 	movement_velocity = input * movement_speed * delta
 	
-	# Jumping
+	# If the player pressed the jump button and we still have a jump left, call jump()
 	if Input.is_action_just_pressed("jump"):
 		if jump_single or jump_double:
 			jump()

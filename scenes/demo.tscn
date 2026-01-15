@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://mhmwbrtklr6g"]
+[gd_scene load_steps=3 format=3 uid="uid://mhmwbrtklr6g"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_tqfh0"]
+[ext_resource type="PackedScene" uid="uid://e64a4omgpcs" path="res://models/coin.glb" id="2_ba4lm"]
 
 [node name="Demo" type="Node3D"]
 
@@ -10,3 +11,6 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 0.8270111)
 use_collision = true
 size = Vector3(4.112793, 15.230286, 6.0207214)
+
+[node name="coin" parent="." instance=ExtResource("2_ba4lm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37253523, 1.0330052, 2.125668)

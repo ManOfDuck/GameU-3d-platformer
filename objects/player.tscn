@@ -46,6 +46,21 @@ shape = SubResource("CapsuleShape3D_gdq8c")
 
 [node name="Character" parent="." instance=ExtResource("2_nero3")]
 
+[node name="leg-left" parent="Character/character/root" index="0"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.125, 0.17625, -0.02375)
+
+[node name="leg-right" parent="Character/character/root" index="1"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.125, 0.17625, -0.023750002)
+
+[node name="torso" parent="Character/character/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, -1.80478e-15, 0.17625, -0.02375)
+
+[node name="arm-left" parent="Character/character/root/torso" index="0"]
+transform = Transform3D(0.70710695, 0.70710695, 0, -0.70710695, 0.70710695, 0, 0, 0, 1, 0.3, 0.175, 0)
+
+[node name="arm-right" parent="Character/character/root/torso" index="1"]
+transform = Transform3D(0.70710695, -0.70710695, 0, 0.70710695, 0.70710695, 0, 0, 0, 1, -0.3, 0.1195, 0)
+
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
@@ -73,7 +88,7 @@ autoplay = true
 
 [node name="View" type="Node3D" parent="CameraHolder" node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8580446, 0)
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, 2.7162852, -2.5072398)
 script = ExtResource("6_3rerk")
 target = NodePath("../..")
 
