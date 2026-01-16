@@ -23,13 +23,18 @@ glow_enabled = true
 environment = SubResource("Environment_vephn")
 
 [node name="Player" parent="." instance=ExtResource("1_tqfh0")]
-accel_time_seconds = 5
+accel_force = 30.0
 jump_strength = 10
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 0.8270111)
 use_collision = true
 size = Vector3(4.112793, 15.230286, 6.0207214)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36017, -7.709854, -0.42751265)
+use_collision = true
+size = Vector3(134.86786, 15.230286, 3.2012787)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 10.435916)

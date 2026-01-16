@@ -3,8 +3,10 @@ class_name Player extends CharacterBody3D
 signal coin_collected
 
 
-@export var movement_speed = 250
-@export var accel_time_seconds = 1
+@export var movement_speed = 5
+@export var accel_time= 1.0
+@export var accel_force = 4.0
+
 @export var jump_strength = 7
 @export var jump_count = 2
 
@@ -82,15 +84,17 @@ func handle_walking(delta):
 	input = input.normalized()
 	
 	# Calculate how fast we want to be going
-	target_movement_velocity = input * movement_speed * delta
+	target_movement_velocity = input * movement_speed
 	
 	print(velocity.x)
 	if velocity.x == target_movement_velocity.x and target_movement_velocity.x != 0:
 		print("AHAHAH")
 	
 	# Accelarate towards that value
-	velocity.x = lerp(velocity.x, target_movement_velocity.x, 10/accel_time_seconds * delta)
-	velocity.z = lerp(velocity.z, target_movement_velocity.z, 10/accel_time_seconds * delta)
+	#velocity.x = lerp(velocity.x, target_movement_velocity.x, 10.0/accel_time * delta)
+	#velocity.z = lerp(velocity.z, target_movement_velocity.z, 10.0/accel_time * delta)
+	velocity.x = move_toward(velocity.x, target_movement_velocity.x, accel_force * delta)
+	velocity.z = move_toward(velocity.z, target_movement_velocity.z, accel_force * delta)
 
 
 # Handle animation(s)
@@ -100,7 +104,7 @@ func handle_effects(delta):
 	
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
-		var speed_factor = horizontal_velocity.length() / movement_speed / delta
+		var speed_factor = horizontal_velocity.length() / movement_speed 
 		if speed_factor > 0.05:
 			if animation.current_animation != "walk":
 				animation.play("walk", 0.1)
