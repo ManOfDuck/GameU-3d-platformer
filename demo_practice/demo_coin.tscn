@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rbw4rt64xb4b"]
 
 [ext_resource type="PackedScene" uid="uid://e64a4omgpcs" path="res://models/coin_model.glb" id="1_cbdqo"]
-[ext_resource type="Script" uid="uid://dh3856uojool4" path="res://objects/demo_coin.gd" id="1_s5alc"]
+[ext_resource type="Script" uid="uid://dh3856uojool4" path="res://demo_practice/demo_coin.gd" id="1_s5alc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s5alc"]
 radius = 0.29768658

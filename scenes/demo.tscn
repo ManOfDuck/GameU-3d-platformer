@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://mhmwbrtklr6g"]
+[gd_scene load_steps=7 format=3 uid="uid://mhmwbrtklr6g"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_tqfh0"]
-[ext_resource type="PackedScene" uid="uid://rbw4rt64xb4b" path="res://objects/demo_coin.tscn" id="2_ba4lm"]
+[ext_resource type="PackedScene" uid="uid://rbw4rt64xb4b" path="res://demo_practice/demo_coin.tscn" id="2_ba4lm"]
+[ext_resource type="Script" uid="uid://bmhqnxt6rrt5" path="res://scenes/character_body_3d.gd" id="3_l20p6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ba4lm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_l20p6"]
+sky_material = SubResource("ProceduralSkyMaterial_ba4lm")
+
+[sub_resource type="Environment" id="Environment_vephn"]
+background_mode = 2
+sky = SubResource("Sky_l20p6")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Demo" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vephn")
+
 [node name="Player" parent="." instance=ExtResource("1_tqfh0")]
+accel_time_seconds = 5
+jump_strength = 10
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 0.8270111)
@@ -25,3 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34716368, 1.9723508, 7.0109
 
 [node name="DemoCoin2" parent="." instance=ExtResource("2_ba4lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21222973, 2.193423, 4.5369444)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("3_l20p6")

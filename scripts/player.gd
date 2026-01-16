@@ -3,16 +3,18 @@ class_name Player extends CharacterBody3D
 signal coin_collected
 
 
-@export_subgroup("Properties")
 @export var movement_speed = 250
+@export var accel_time_seconds = 1
 @export var jump_strength = 7
+@export var jump_count = 2
 
-var movement_velocity: Vector3
+var target_movement_velocity: Vector3
 var rotation_direction: float
 var gravity = 0
 
 var previously_floored = false
 
+@export var jumps_remaining = 0
 var jump_single = true
 var jump_double = true
 
@@ -28,22 +30,19 @@ var coins = 0
 # "delta" is how long it's been since the last time the function was run.
 func _physics_process(delta):
 	# Calculate how we should move on this frame
-	handle_controls(delta)
-	handle_gravity(delta)
+	handle_walking(delta)
 	
-	# Do some fun visual stuff
-	handle_effects(delta)
+	if is_on_floor():
+		# Reset jumps remaining when on floor
+		jumps_remaining = jump_count
+	else:
+		# Apply gravity, found by the built-in get_gravity() function
+		velocity += get_gravity() * delta
 	
-	# Movement
-	var applied_velocity: Vector3
+	if Input.is_action_just_pressed("jump") and jumps_remaining > 0:
+		jumps_remaining -= 1
+		jump()
 	
-	# NOTE: movement_velocity was set by the handle_controls() function above
-	applied_velocity = velocity.lerp(movement_velocity, delta * 10)
-	
-	# NOTE: gravity was set by the handle_gravity() function above
-	applied_velocity.y = -gravity
-	
-	velocity = applied_velocity
 	# This godot function tells the player to move based on the velocity we set above. It handles stuff like collisions for us!
 	move_and_slide()
 	
@@ -60,14 +59,18 @@ func _physics_process(delta):
 	model.scale = model.scale.lerp(Vector3(1, 1, 1), delta * 10)
 	
 	# If we just landed, squish our model a bit!
-	if is_on_floor() and gravity > 2 and !previously_floored:
+	if is_on_floor() and !previously_floored:
 		model.scale = Vector3(1.25, 0.75, 1.25)
 		Audio.play("res://sounds/land.ogg")
 	
 	previously_floored = is_on_floor()
+	
+	# Do some fun visual stuff
+	handle_effects(delta)
+
 
 # Handle movement input
-func handle_controls(delta):
+func handle_walking(delta):
 	# This creates an "arrow" (Vector3) called "input" and tells Godot to read the player's input
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
@@ -78,21 +81,16 @@ func handle_controls(delta):
 	input = input.rotated(Vector3.UP, view.rotation.y)
 	input = input.normalized()
 	
-	# Update movement_velocity, for use later in physics_process()
-	movement_velocity = input * movement_speed * delta
+	# Calculate how fast we want to be going
+	target_movement_velocity = input * movement_speed * delta
 	
-	# If the player pressed the jump button and we still have a jump left, call jump()
-	if Input.is_action_just_pressed("jump"):
-		if jump_single or jump_double:
-			jump()
-
-
-# Handle gravity
-func handle_gravity(delta):
-	gravity += 25 * delta
-	if gravity > 0 and is_on_floor():
-		jump_single = true
-		gravity = 0
+	print(velocity.x)
+	if velocity.x == target_movement_velocity.x and target_movement_velocity.x != 0:
+		print("AHAHAH")
+	
+	# Accelarate towards that value
+	velocity.x = lerp(velocity.x, target_movement_velocity.x, 10/accel_time_seconds * delta)
+	velocity.z = lerp(velocity.z, target_movement_velocity.z, 10/accel_time_seconds * delta)
 
 
 # Handle animation(s)
@@ -106,14 +104,14 @@ func handle_effects(delta):
 		if speed_factor > 0.05:
 			if animation.current_animation != "walk":
 				animation.play("walk", 0.1)
-	
+			
 			if speed_factor > 0.3:
 				sound_footsteps.stream_paused = false
 				sound_footsteps.pitch_scale = speed_factor
-	
+			
 			if speed_factor > 0.75:
 				particles_trail.emitting = true
-	
+		
 		elif animation.current_animation != "idle":
 			animation.play("idle", 0.1)
 			
@@ -129,14 +127,8 @@ func handle_effects(delta):
 # Jumping
 func jump():
 	Audio.play("res://sounds/jump.ogg")
-	gravity = -jump_strength
 	model.scale = Vector3(0.5, 1.5, 0.5)
-	
-	if jump_single:
-		jump_single = false;
-		jump_double = true;
-	else:
-		jump_double = false;
+	velocity.y = jump_strength
 
 # Collecting coins
 func collect_coin():
