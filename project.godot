@@ -45,6 +45,10 @@ movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
 
 import/blender/enabled=false
 
+[global_group]
+
+player=""
+
 [input]
 
 move_right={

@@ -3,7 +3,6 @@
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://archive/main-environment.tres" id="1_ahusb"]
 [ext_resource type="Script" uid="uid://djpme521r3cxe" path="res://scripts/main.gd" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
-[ext_resource type="Script" uid="uid://bcg2kkbsnttec" path="res://scripts/view.gd" id="5_bg0fr"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://archive/platform.tscn" id="6_sdmev"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://archive/platform_medium.tscn" id="7_ixpj3"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://archive/platform_grass_large_round.tscn" id="8_4oh1e"]
@@ -25,21 +24,11 @@ shadow_offset = Vector2(2, 2)
 [node name="Main" type="Node3D" unique_id=367490872]
 script = ExtResource("1_jkv2x")
 
+[node name="Player" parent="." unique_id=1497897254 instance=ExtResource("2_onms2")]
+transform = Transform3D(-0.046914678, 0, -0.9988989, 0, 1, 0, 0.9988989, 0, -0.046914678, -0.7391515, 1.4907789, -0.29232937)
+
 [node name="Environment" type="WorldEnvironment" parent="." unique_id=1776292133]
 environment = ExtResource("1_ahusb")
-
-[node name="Player" parent="." unique_id=1978909137 groups=["player"] instance=ExtResource("2_onms2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49277484, 0)
-
-[node name="View" type="Node3D" parent="." unique_id=576791828 node_paths=PackedStringArray("target")]
-transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
-script = ExtResource("5_bg0fr")
-target = NodePath("../Player")
-
-[node name="Camera" type="Camera3D" parent="View" unique_id=544948888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-current = true
-fov = 40.0
 
 [node name="World" type="Node3D" parent="." unique_id=955359532]
 
@@ -210,5 +199,3 @@ offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 metadata/_edit_use_anchors_ = true
-
-[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]

@@ -36,9 +36,11 @@ gravity = Vector3(0, 0.1, 0)
 scale_min = 0.75
 scale_curve = SubResource("CurveTexture_f46kd")
 
-[node name="Player" type="CharacterBody3D" unique_id=1497897254]
+[node name="Player" type="CharacterBody3D" unique_id=1497897254 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8580446, 0)
 script = ExtResource("1_ffboj")
+movement_speed = 4.8
+accel_force = 20.0
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=2061310505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
@@ -91,7 +93,10 @@ unique_name_in_owner = true
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, 2.7162852, -2.5072398)
 script = ExtResource("6_3rerk")
 target = NodePath("../..")
+zoom_minimum = 7.0
+zoom_maximum = 3.0
 
 [node name="Camera" type="Camera3D" parent="CameraHolder/View" unique_id=1012698354]
+fov = 50.0
 
 [editable path="Character"]

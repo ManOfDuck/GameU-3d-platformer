@@ -3,9 +3,9 @@ class_name Player extends CharacterBody3D
 signal coin_collected
 
 
-@export var movement_speed = 5
-@export var accel_time= 1.0
-@export var accel_force = 4.0
+@export var movement_speed = 5.0
+
+@export var accel_force = 30.0
 
 @export var jump_strength = 7
 @export var jump_count = 2
