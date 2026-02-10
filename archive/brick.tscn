@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://85ldumyetgou"]
+[gd_scene format=3 uid="uid://85ldumyetgou"]
 
 [ext_resource type="PackedScene" uid="uid://cs417o1y08xb1" path="res://models/brick_model.glb" id="1_lex57"]
-[ext_resource type="Script" uid="uid://b1egvfagp7vs1" path="res://objects/brick.gd" id="2_hbwgr"]
-[ext_resource type="Material" uid="uid://booc27br2ap2l" path="res://models/colormap.tres" id="3_2u2la"]
-[ext_resource type="ArrayMesh" uid="uid://bkyb0o2ipxxya" path="res://meshes/brick.res" id="4_pm7ss"]
+[ext_resource type="Script" uid="uid://b1egvfagp7vs1" path="res://archive/brick.gd" id="2_hbwgr"]
+[ext_resource type="Material" uid="uid://booc27br2ap2l" path="res://models/Textures/colormap.tres" id="3_2u2la"]
+[ext_resource type="ArrayMesh" uid="uid://bkyb0o2ipxxya" path="res://particle_meshes/brick.res" id="4_pm7ss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a8y0u"]
 size = Vector3(0.75, 0.75, 0.75)
@@ -39,22 +39,22 @@ scale_min = 0.29999998
 scale_curve = SubResource("CurveTexture_iwokp")
 color_ramp = SubResource("GradientTexture1D_1o7s2")
 
-[node name="brick" type="StaticBody3D"]
+[node name="brick" type="StaticBody3D" unique_id=428157275]
 script = ExtResource("2_hbwgr")
 
-[node name="Mesh" parent="." instance=ExtResource("1_lex57")]
+[node name="Mesh" parent="." unique_id=16899667 instance=ExtResource("1_lex57")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2139216774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 shape = SubResource("BoxShape3D_a8y0u")
 
-[node name="BottomDetector" type="Area3D" parent="."]
+[node name="BottomDetector" type="Area3D" parent="." unique_id=773622451]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomDetector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomDetector" unique_id=1666400492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_jkv2x")
 
-[node name="Particles" type="GPUParticles3D" parent="."]
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=1923275353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25192702, 0)
 material_override = ExtResource("3_2u2la")
 emitting = false

@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://mhmwbrtklr6g"]
+
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_6jvdj"]
+[ext_resource type="PackedScene" uid="uid://rbw4rt64xb4b" path="res://demo_practice/demo_coin.tscn" id="2_ed7hv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ba4lm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_l20p6"]
+sky_material = SubResource("ProceduralSkyMaterial_ba4lm")
+
+[sub_resource type="Environment" id="Environment_vephn"]
+background_mode = 2
+sky = SubResource("Sky_l20p6")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_pmy3c"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
+
+[node name="Demo" type="Node3D" unique_id=367900635]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=945537382]
+environment = SubResource("Environment_vephn")
+
+[node name="Player" parent="." unique_id=1035608903 instance=ExtResource("1_6jvdj")]
+accel_force = 30.0
+jump_strength = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1641281369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 0.8270111)
+use_collision = true
+size = Vector3(4.112793, 15.230286, 6.0207214)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=932004138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36017, -7.709854, -0.42751265)
+use_collision = true
+size = Vector3(134.86786, 15.230286, 3.2012787)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2007324335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25463867, -7.115143, 10.435916)
+use_collision = true
+size = Vector3(4.112793, 15.230286, 6.0207214)
+
+[node name="DemoCoin" parent="." unique_id=745193108 instance=ExtResource("2_ed7hv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34716368, 2.8303838, 5.809815)
+
+[node name="DemoCoin4" parent="." unique_id=1384717968 instance=ExtResource("2_ed7hv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34716368, 1.9723508, 7.010935)
+
+[node name="DemoCoin2" parent="." unique_id=485841010 instance=ExtResource("2_ed7hv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21222973, 2.193423, 4.5369444)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2050849372]
+script = SubResource("GDScript_pmy3c")

@@ -86,10 +86,6 @@ func handle_walking(delta):
 	# Calculate how fast we want to be going
 	target_movement_velocity = input * movement_speed
 	
-	print(velocity.x)
-	if velocity.x == target_movement_velocity.x and target_movement_velocity.x != 0:
-		print("AHAHAH")
-	
 	# Accelarate towards that value
 	#velocity.x = lerp(velocity.x, target_movement_velocity.x, 10.0/accel_time * delta)
 	#velocity.z = lerp(velocity.z, target_movement_velocity.z, 10.0/accel_time * delta)
