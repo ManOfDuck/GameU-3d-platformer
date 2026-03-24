@@ -24,7 +24,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Audio="*res://scripts/audio.gd"
+Audio="*res://sounds/audio.gd"
 
 [debug]
 
@@ -40,6 +40,16 @@ window/stretch/aspect="expand"
 [editor]
 
 movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
+
+[file_customization]
+
+folder_colors={
+"res://models/": "red",
+"res://models/more_models/": "red",
+"res://objects/": "blue",
+"res://scenes/": "green",
+"res://sounds/": "yellow"
+}
 
 [filesystem]
 
