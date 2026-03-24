@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dl2ed4gkybggf"]
+[gd_scene load_steps=12 format=3 uid="uid://dl2ed4gkybggf"]
 
 [ext_resource type="Script" uid="uid://br1k30d32naot" path="res://objects/player.gd" id="1_ffboj"]
 [ext_resource type="PackedScene" uid="uid://xy8rvnjp22n5" path="res://models/character.glb" id="2_3rerk"]
@@ -36,41 +36,41 @@ gravity = Vector3(0, 0.1, 0)
 scale_min = 0.75
 scale_curve = SubResource("CurveTexture_f46kd")
 
-[node name="Player" type="CharacterBody3D" unique_id=1497897254 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8580446, 0)
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85804, 0)
 script = ExtResource("1_ffboj")
 movement_speed = 4.8
 accel_force = 20.0
 
-[node name="Collider" type="CollisionShape3D" parent="." unique_id=2061310505]
+[node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_gdq8c")
 
-[node name="Model" parent="." unique_id=2089491097 instance=ExtResource("2_3rerk")]
+[node name="Model" parent="." instance=ExtResource("2_3rerk")]
 
 [node name="leg-left" parent="Model/character/root" index="0"]
-transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.125, 0.17625, -0.02375)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
 
 [node name="leg-right" parent="Model/character/root" index="1"]
-transform = Transform3D(0.9659258, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, 0.9659258, -0.125, 0.17625, -0.023750002)
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
 
 [node name="torso" parent="Model/character/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, -1.8047786e-15, 0.17625, -0.02375)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -1.80478e-15, 0.17625, -0.02375)
 
 [node name="arm-left" parent="Model/character/root/torso" index="0"]
-transform = Transform3D(0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0, 1, 0.3, 0.17500001, 0)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.175, 0)
 
 [node name="arm-right" parent="Model/character/root/torso" index="1"]
-transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.3, 0.1195, 0)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1195, 0)
 
-[node name="Shadow" type="Decal" parent="." unique_id=1499367896]
+[node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
 texture_albedo = ExtResource("3_0c7wt")
 modulate = Color(1, 1, 1, 0.705882)
 normal_fade = 0.5
 
-[node name="ParticlesTrail" type="GPUParticles3D" parent="." unique_id=869870526]
+[node name="ParticlesTrail" type="GPUParticles3D" parent="."]
 physics_interpolation_mode = 2
 visible = false
 material_override = SubResource("StandardMaterial3D_q7stj")
@@ -80,23 +80,23 @@ fixed_fps = 0
 process_material = SubResource("ParticleProcessMaterial_3rerk")
 draw_pass_1 = ExtResource("4_mvhqy")
 
-[node name="SoundFootsteps" type="AudioStreamPlayer" parent="." unique_id=1437498315]
+[node name="SoundFootsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ics1s")
 volume_db = -5.0
 pitch_scale = 1.25
 autoplay = true
 
-[node name="CameraHolder" type="Node" parent="." unique_id=2091351187]
+[node name="CameraHolder" type="Node" parent="."]
 
-[node name="View" type="Node3D" parent="CameraHolder" unique_id=1522795585 node_paths=PackedStringArray("target")]
+[node name="View" type="Node3D" parent="CameraHolder" node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
-transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, 2.7162852, -2.5072398)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.71629, -2.50724)
 script = ExtResource("6_3rerk")
 target = NodePath("../..")
 zoom_minimum = 7.0
 zoom_maximum = 3.0
 
-[node name="Camera" type="Camera3D" parent="CameraHolder/View" unique_id=1012698354]
+[node name="Camera" type="Camera3D" parent="CameraHolder/View"]
 fov = 50.0
 
 [editable path="Model"]
