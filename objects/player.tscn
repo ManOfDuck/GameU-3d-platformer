@@ -48,19 +48,19 @@ shape = SubResource("CapsuleShape3D_gdq8c")
 
 [node name="Model" parent="." unique_id=2089491097 instance=ExtResource("2_3rerk")]
 
-[node name="leg-left" parent="Model/character/root" index="0"]
+[node name="leg-left" parent="Model/character/root" parent_id_path=PackedInt32Array(2089491097, 87971056) index="0" unique_id=793493043]
 transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0.125, 0.17625, -0.02375)
 
-[node name="leg-right" parent="Model/character/root" index="1"]
+[node name="leg-right" parent="Model/character/root" parent_id_path=PackedInt32Array(2089491097, 87971056) index="1" unique_id=1496379177]
 transform = Transform3D(0.9659258, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, 0.9659258, -0.125, 0.17625, -0.023750002)
 
-[node name="torso" parent="Model/character/root" index="2"]
+[node name="torso" parent="Model/character/root" parent_id_path=PackedInt32Array(2089491097, 87971056) index="2" unique_id=1875821842]
 transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, -1.8047786e-15, 0.17625, -0.02375)
 
-[node name="arm-left" parent="Model/character/root/torso" index="0"]
+[node name="arm-left" parent="Model/character/root/torso" index="0" unique_id=1929312246]
 transform = Transform3D(0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0, 1, 0.3, 0.17500001, 0)
 
-[node name="arm-right" parent="Model/character/root/torso" index="1"]
+[node name="arm-right" parent="Model/character/root/torso" index="1" unique_id=2803635]
 transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.3, 0.1195, 0)
 
 [node name="Shadow" type="Decal" parent="." unique_id=1499367896]

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bp37g5te0wc2m"]
+
+[ext_resource type="Material" uid="uid://bcry5g0tx66m" path="res://2D Assets/Materials/prototype_grid_white.tres" id="1_jirdo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gkh53"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_014kd"]
+sky_material = SubResource("ProceduralSkyMaterial_gkh53")
+
+[sub_resource type="Environment" id="Environment_bswci"]
+background_mode = 2
+sky = SubResource("Sky_014kd")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level1" type="Node3D" unique_id=1524702171]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=265410255]
+environment = SubResource("Environment_bswci")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=964845788]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="Baseplate" type="CSGBox3D" parent="." unique_id=907759114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42785645, -7.826172, -0.0052490234)
+material_override = ExtResource("1_jirdo")
+use_collision = true
+size = Vector3(10, 16.152344, 10)
+material = ExtResource("1_jirdo")
