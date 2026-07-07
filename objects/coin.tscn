@@ -91,20 +91,19 @@ color_ramp = SubResource("GradientTexture1D_1o7s2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_744xy"]
 
-[node name="coin" type="Area3D"]
+[node name="coin" type="Area3D" unique_id=2122118775]
 script = ExtResource("2_gaakh")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1373276371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("ArrayMesh_t08aw")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_xkafy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1956468625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_bnkeq")
 
-[node name="Particles" type="GPUParticles3D" parent="."]
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=2077271286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
 material_override = SubResource("StandardMaterial3D_6hm51")
 fixed_fps = 0

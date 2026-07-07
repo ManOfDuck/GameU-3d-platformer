@@ -2,26 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://xy8rvnjp22n5" path="res://models/character.glb" id="1_vn7w5"]
 
-[node name="character" instance=ExtResource("1_vn7w5")]
+[node name="character" unique_id=638041863 instance=ExtResource("1_vn7w5")]
 
-[node name="leg-left" parent="character/root" index="0"]
+[node name="leg-left" parent="character/root" parent_id_path=PackedInt32Array(67494344) index="0" unique_id=495708199]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
 
-[node name="leg-right" parent="character/root" index="1"]
+[node name="leg-right" parent="character/root" parent_id_path=PackedInt32Array(67494344) index="1" unique_id=1602581473]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
 
-[node name="torso" parent="character/root" index="2"]
+[node name="torso" parent="character/root" parent_id_path=PackedInt32Array(67494344) index="2" unique_id=752049387]
 transform = Transform3D(1, 0, 0, 0, 0.996194, 0.0871557, 0, -0.0871557, 0.996194, -1.80478e-15, 0.17625, -0.02375)
 
-[node name="arm-left" parent="character/root/torso" index="0"]
+[node name="arm-left" parent="character/root/torso" index="0" unique_id=755915308]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.175, 0)
 
-[node name="arm-right" parent="character/root/torso" index="1"]
+[node name="arm-right" parent="character/root/torso" index="1" unique_id=1145784658]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1195, 0)
 
-[node name="antenna" parent="character/root/torso" index="2"]
+[node name="antenna" parent="character/root/torso" index="2" unique_id=1862945598]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0.6, 0)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1662996712]
 deterministic = true
 playback_default_blend_time = 0.2
